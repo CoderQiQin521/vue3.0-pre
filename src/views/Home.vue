@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>{{state.count}}</div>
+    <button @click="add">+</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { reactive, computed } from "vue";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  setup() {
+    const state = reactive({
+      count: 0
+    });
+
+    function add() {
+      state.count++;
+    }
+    return { state, add };
   }
-}
+};
 </script>
